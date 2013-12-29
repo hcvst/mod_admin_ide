@@ -1,0 +1,19 @@
+{
+  "name": "Zotonic Admin IDE",
+  "version": "0.0.1",
+  "authors": [
+    "Hans Christian v. Stockhausen <hc@vst.io>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-ace": "bower"
+  }
+}
