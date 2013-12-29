@@ -29,7 +29,12 @@
                 mode: 'erlang',
                 onLoad: aceLoaded,
                 onChange: aceChanged
-              }"></div>
+              }">
+%% -*- mode: erlang -*-
+[
+    {admin_ide, ["admin", "ide"], controller_admin_ide, []}
+].
+            </div>
         </div>
     </div>
 
