@@ -13,10 +13,12 @@
 
 
 process_get(_ReqData, Context) ->
+    true = z_acl:is_allowed(use, mod_admin_ide, Context),
     {array, walk_directory_tree(z_path:site_dir(Context))}.
 
-process_post(_ReqData, _Context) ->
-     ok.
+process_post(_ReqData, Context) ->
+    true = z_acl:is_allowed(use, mod_admin_ide, Context),
+    ok.
 
 %%% Internal helper
 
