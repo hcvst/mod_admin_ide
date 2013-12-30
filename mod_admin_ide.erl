@@ -23,7 +23,7 @@
 -mod_description("Support editing of site files.").
 -mod_prio(1000).
 -mod_depends([admin]).
--mod_provides([]).
+-mod_provides([admin_ide]).
 
 -export([
          observe_admin_menu/3

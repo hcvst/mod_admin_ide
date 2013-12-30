@@ -26,7 +26,7 @@
 -include_lib("controller_html_helper.hrl").
 
 is_authorized(ReqData, Context) ->
-    z_acl:wm_is_authorized(use, ?MODULE, ReqData, Context).
+    z_acl:wm_is_authorized(use, mod_admin_ide, ReqData, Context).
 
 
 html(Context) ->
