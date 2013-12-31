@@ -52,12 +52,30 @@
                             class="btn btn-primary">
                         Save file
                     </button>
-                    <button type="button" class="btn">
+                    <button ng-disabled="flagButtonNewFileDisabled" ype="button" class="btn">
                         New file
                     </button>
-                    <button type="button" class="btn">
+                    <button ng-disabled="flagButtonNewFolderDisabled" ype="button" class="btn">
                         New folder
                     </button>
+                </div>
+                <div>
+                    <br />
+                    <input type="checkbox" ng-model="isAutoSaveEnabled"> Autosave
+                </div>
+            </div>
+        </div>
+
+        <div class="widget">
+            <h3 class="widget-header">{_ Recent files _}</h3>
+            <div class="widget-content">
+                <div 
+                    data-angular-treeview="true"
+                    data-tree-id="recentFileBrowser"
+                    data-tree-model="recentDirectoryTree"
+                    data-node-id="id"
+                    data-node-label="label"
+                    data-node-children="children" >
                 </div>
             </div>
         </div>

@@ -43,6 +43,7 @@ walk_directory_tree(Path) ->
     [{struct, 
         [
             {id, X},
+            {isDirNode, filelib:is_dir(X)},
             {label, filename:basename(X)},
             {children, {array, walk_directory_tree(X ++ "/*")}}
         ]
