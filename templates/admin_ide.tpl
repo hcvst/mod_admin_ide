@@ -27,7 +27,7 @@
 </div -->
 <div class="row-fluid" ng-app="IDE" ng-controller="ideCtrl">
     <div id="category-sorter" class="span8">
-        <div>
+        <div ng-form="editorForm">
             <div ng-model="editor"
                  ui-ace="{
                 useWrapMode : true,
@@ -37,21 +37,28 @@
                 onLoad: aceLoaded,
                 onChange: aceChanged
               }">
-%% -*- mode: erlang -*-
-[
-    {admin_ide, ["admin", "ide"], controller_admin_ide, []}
-].
             </div>
         </div>
     </div>
 
     <div id="sidebar" class="span4">
         <div class="widget">
-            <h3 class="widget-header">{_ IDE _}</h3>
+            <h3 class="widget-header">IDE</h3>
             <div class="widget-content">
-                <p>
-                    Toolbar goes here
-                </p>
+                <div class="btn-group">
+                    <button ng-click="onButtonSaveClicked()"
+                            ng-disabled="isButtonSaveDisabled()" 
+                            type="button" 
+                            class="btn btn-primary">
+                        Save file
+                    </button>
+                    <button type="button" class="btn">
+                        New file
+                    </button>
+                    <button type="button" class="btn">
+                        New folder
+                    </button>
+                </div>
             </div>
         </div>
 

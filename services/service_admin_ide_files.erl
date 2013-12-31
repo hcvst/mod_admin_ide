@@ -12,8 +12,7 @@
 -include_lib("zotonic.hrl").
 
 
-process_get(ReqData, Context) ->
-    io:format("Context: ~p", [ReqData]),
+process_get(_ReqData, Context) ->
     true = z_acl:is_allowed(use, mod_admin_ide, Context),
     case z_context:get_q(filename, Context) of
         undefined -> {array, walk_directory_tree(z_path:site_dir(Context))};
@@ -29,9 +28,14 @@ process_get(ReqData, Context) ->
     end.
     
 
-process_post(_ReqData, Context) ->
+process_post(ReqData, Context) ->
     true = z_acl:is_allowed(use, mod_admin_ide, Context),
-    ok.
+    {Body, _} = wrq:req_body(ReqData),
+    Parsed = z_json:from_mochijson(mochijson:binary_decode(Body), Context),
+    Filename = binary:bin_to_list(proplists:get_value(<<"filename">>, Parsed)),
+    Contents = proplists:get_value(<<"contents">>, Parsed),
+    true = is_valid_filename(Filename, Context),
+    file:write_file(Filename, Contents).
 
 %%% Internal helper
 
