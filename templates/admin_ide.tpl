@@ -28,7 +28,8 @@
 <div class="row-fluid" ng-app="IDE" ng-controller="ideCtrl">
     <div id="category-sorter" class="span8">
         <div>
-            <div ui-ace="{
+            <div ng-model="editor"
+                 ui-ace="{
                 useWrapMode : true,
                 showGutter: true,
                 theme:'tomorrow',
@@ -57,10 +58,10 @@
         <div class="widget">
             <h3 class="widget-header">{_ File Browser _}</h3>
             <div class="widget-content">
-                <div
+                <div style="height:320px; overflow:scroll"
                     data-angular-treeview="true"
-                    data-tree-id="abc"
-                    data-tree-model="treedata"
+                    data-tree-id="fileBrowser"
+                    data-tree-model="directoryTree"
                     data-node-id="id"
                     data-node-label="label"
                     data-node-children="children" >

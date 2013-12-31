@@ -12,9 +12,22 @@
 -include_lib("zotonic.hrl").
 
 
-process_get(_ReqData, Context) ->
+process_get(ReqData, Context) ->
+    io:format("Context: ~p", [ReqData]),
     true = z_acl:is_allowed(use, mod_admin_ide, Context),
-    {array, walk_directory_tree(z_path:site_dir(Context))}.
+    case z_context:get_q(filename, Context) of
+        undefined -> {array, walk_directory_tree(z_path:site_dir(Context))};
+        Filename -> 
+            case is_valid_filename(Filename, Context) of
+                true -> {ok, Data} = file:read_file(Filename),
+                        {struct, [
+                          {filename, Filename},
+                          {contents, Data}
+                        ]};
+                false -> "You cannot access this location."
+            end
+    end.
+    
 
 process_post(_ReqData, Context) ->
     true = z_acl:is_allowed(use, mod_admin_ide, Context),
@@ -41,3 +54,7 @@ sorted_directory_entries(Path) ->
         (IsADir and not IsBDir) or (IsADir =:= IsBDir and (A < B))
         end
     	,filelib:wildcard(Path)).
+
+is_valid_filename(Filename, Context) ->
+    SiteDir = z_path:site_dir(Context),
+    (string:str(Filename, SiteDir) =:= 1) and (string:str(Filename, "..") =:= 0).
