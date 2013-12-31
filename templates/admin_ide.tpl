@@ -45,23 +45,32 @@
         <div class="widget">
             <h3 class="widget-header">IDE</h3>
             <div class="widget-content">
-                <div class="btn-group">
-                    <button ng-click="onButtonSaveClicked()"
-                            ng-disabled="isButtonSaveDisabled()" 
-                            type="button" 
-                            class="btn btn-primary">
-                        Save file
-                    </button>
-                    <button ng-disabled="flagButtonNewFileDisabled" ype="button" class="btn">
-                        New file
-                    </button>
-                    <button ng-disabled="flagButtonNewFolderDisabled" ype="button" class="btn">
-                        New folder
-                    </button>
-                </div>
-                <div>
-                    <br />
-                    <input type="checkbox" ng-model="isAutoSaveEnabled"> Autosave
+
+                <div class="btn-toolbar" role="toolbar">
+
+                    <div class="btn-group">
+                        <button ng-click="onButtonSaveClicked()"
+                                ng-disabled="isButtonSaveDisabled()" 
+                                type="button" 
+                                class="btn btn-primary">
+                            Save file
+                        </button>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button ng-disabled="flagButtonNewFileDisabled" ype="button" class="btn">
+                            New file
+                        </button>
+
+                        <button ng-disabled="flagButtonNewFolderDisabled" ype="button" class="btn">
+                            New folder
+                        </button>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" ng-model="isAutoSaveEnabled"> Autosave
+                    </div>
+
                 </div>
             </div>
         </div>
