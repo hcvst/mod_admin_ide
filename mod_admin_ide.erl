@@ -26,11 +26,19 @@
 -mod_provides([admin_ide]).
 
 -export([
+	     init/1,
          observe_admin_menu/3
 ]).
 
 -include_lib("zotonic.hrl").
 -include_lib("modules/mod_admin/include/admin_menu.hrl").
+
+init(Context) ->
+    case m_config:get_value(?MODULE, home_directory, Context) of
+    	undefined -> m_config:set_value(?MODULE, home_directory, 
+    		z_path:site_dir(Context), Context);
+    	_ -> ok
+    end.
 
 observe_admin_menu(admin_menu, Acc, Context) ->
     [

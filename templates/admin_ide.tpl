@@ -56,13 +56,19 @@
                             Save file
                         </button>
                     </div>
-                    
+
                     <div class="btn-group">
-                        <button ng-disabled="flagButtonNewFileDisabled" ype="button" class="btn">
+                        <button ng-disabled="flagButtonNewFileDisabled" 
+                                ng-click="onButtonNewFileClicked()"
+                                type="button" 
+                                class="btn">
                             New file
                         </button>
 
-                        <button ng-disabled="flagButtonNewFolderDisabled" ype="button" class="btn">
+                        <button ng-disabled="flagButtonNewFolderDisabled" 
+                                ng-click="onButtonNewFolderClicked()"
+                                type="button" 
+                                class="btn">
                             New folder
                         </button>
                     </div>
@@ -76,7 +82,7 @@
         </div>
 
         <div class="widget">
-            <h3 class="widget-header">{_ Recent files _}</h3>
+            <h3 class="widget-header">{_ Recent Files _}</h3>
             <div class="widget-content">
                 <div 
                     data-angular-treeview="true"
