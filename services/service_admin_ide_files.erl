@@ -1,3 +1,6 @@
+%% @author Hans Christian v. Stockhausen <hc@vst.io>
+%% @copyright 2013 Hans Christian v. Stockhausen
+
 -module(service_admin_ide_files).
 -author("Hans Christian von Stockhausen <hc@vst.io>").
 
