@@ -20,11 +20,15 @@
 
 {% block content %}
 {% with m.acl.is_admin as editable %}
-<!-- div class="edit-header">
-    <h2>{_ IDE _}</h2>
+<div class="edit-header">
+    <h2>{_ Experimental IDE _}</h2>
 
-    <p>{_ The IDE let's you _}</p>
-</div -->
+    <p>
+        <a href="https://github.com/hcvst/mod_admin_ide">
+            https://github.com/hcvst/mod_admin_ide
+        </a>
+    </p>
+</div>
 <div class="row-fluid" ng-app="IDE" ng-controller="ideCtrl">
     <div id="category-sorter" class="span8">
         <div ng-form="editorForm">
@@ -53,7 +57,7 @@
                                 ng-disabled="isButtonSaveDisabled()" 
                                 type="button" 
                                 class="btn btn-primary">
-                            Save file
+                            {_ Save file _}
                         </button>
                     </div>
 
@@ -62,19 +66,29 @@
                                 ng-click="onButtonNewFileClicked()"
                                 type="button" 
                                 class="btn">
-                            New file
+                            {_ New file _}
                         </button>
 
                         <button ng-disabled="flagButtonNewFolderDisabled" 
                                 ng-click="onButtonNewFolderClicked()"
                                 type="button" 
                                 class="btn">
-                            New folder
+                            {_ New folder _}
+                        </button>
+                    </div>
+                    
+                     <div class="btn-group">
+                        <button ng-disabled="flagButtonCommitDisabled" 
+                                ng-click="onButtonCommitClicked()"
+                                type="button" 
+                                class="btn">
+                            {_ Commit _}
                         </button>
                     </div>
 
                     <div>
-                        <input type="checkbox" ng-model="isAutoSaveEnabled"> Autosave
+                        <input type="checkbox" ng-model="isAutoSaveEnabled"> 
+                            {_ Autosave _}
                     </div>
 
                 </div>
